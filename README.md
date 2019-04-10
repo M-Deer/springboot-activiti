@@ -5,11 +5,15 @@
 因为都是使用 Junit 进行测试使用的。
 
 ### 开发环境：
-- IDEA：Spring Tool Suite 4
-- JDK：1.8 version
-- SpringBoot：2.1.3.RELEASE
-- Activiti：6.0.0
-- Lombok：1.18.6
+
+- Spring Tool Suite：Spring Tool Suite 4 版本
+- JDK：1.8 版本
+- SpringBoot：2.1.3.RELEASE 版本
+- Activiti：6.0.0 版本
+- Lombok：1.18.6 版本
+- MyBatis：2.0.0 版本
+- Mybatis - Plus：3.1.0 版本
+- MySQL：8.0.15 版本
 
 ## Note：
 - Activit - Basis
