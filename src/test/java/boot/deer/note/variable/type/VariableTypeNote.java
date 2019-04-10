@@ -1,4 +1,4 @@
-package boot.deer.note.variable.supplement;
+package boot.deer.note.variable.type;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -15,12 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import boot.deer.SpringbootActivitiApplicationTests;
 
 /** 
- * @ClassName: VariableSupplementNote.java 
+ * @ClassName: VariableTypeNote.java 
  * @Author: Mr_Deer
  * @Date: 2019年4月9日 上午11:39:29 
- * @Description: "流程变量"补充笔记 - 使用 Junit 进行测试
+ * @Description: "变量类型"笔记 - 使用 Junit 进行测试
  */
-public class VariableSupplementNote extends SpringbootActivitiApplicationTests {
+public class VariableTypeNote extends SpringbootActivitiApplicationTests {
 
 	// 注入 RepositoryService
 	@Autowired

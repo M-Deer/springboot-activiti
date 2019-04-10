@@ -1,4 +1,4 @@
-package boot.deer.note.variable.supplement;
+package boot.deer.note.variable.type;
 
 import java.io.Serializable;
 
