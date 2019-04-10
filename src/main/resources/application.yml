@@ -1,0 +1,73 @@
+# # # # # # # # # # # # # # # # # # Server Start # # # # # # # # # # # # # # # # # #
+server:
+  # 项目启动的端口号
+  port: 8080
+  # 项目的上下文发布路径
+  servlet:
+    context-path: "/activiti"
+# # # # # # # # # # # # # # # # # # Server End # # # # # # # # # # # # # # # # # #
+
+# # # # # # # # # # # # # # # # # # Spring Start # # # # # # # # # # # # # # # # # #
+# 配置关于 spring 相关的配置
+spring:
+  activiti:
+    # Activiti 的自动建表的设置
+    database-schema-update: true
+    # 这里设为 false 不检查流程图资源
+    check-process-definitions: false
+
+  # 配置数据源 DataSource
+  datasource:
+    # 数据源 DataSource 名称
+    name: BOOT_DATA_SOURCE
+    # 数据源连接池类型（这里使用阿里的数据源 德鲁伊 druid）
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    # druid 相关配置
+    druid:
+      # 驱动名称
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 数据库地址
+      url: jdbc:mysql://127.0.0.1/t_activiti?useUnicode=true&useSSL=false&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+      username: root
+      # 用户名密码
+      password: 123456
+
+      # 数据库用户名
+      # 配置初始化大小/最大/最小
+      initial-size: 10
+      max-active: 200
+      min-idle: 10
+      # 最大连接等待时间
+      max-wait: 60000
+      # 间隔过久进行一次检查，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      # 一个连接在池内最小的生存时间
+      min-evictable-idle-time-millis: 300000
+
+      # 其余杂项配置，该配置无法在 Oracle 中使用
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开 PSCache，并指定每个连接上的 PSCache 的大小，oracle 设为 true，mysql 设为 false，分库分表较多，推荐设置为 false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+# # # # # # # # # # # # # # # # # # Spring End # # # # # # # # # # # # # #
+
+# # # # # # # # # # # # # # # # # # Mybatis Start # # # # # # # # # # # # # # # # # #
+# 配置 mybatis plus 相关配置
+mybatis-plus:
+  # 配置映射的 xml 文件位置
+  mapper-locations: classpath:mapper/**/*.xml
+# # # # # # # # # # # # # # # # # # Mybatis End # # # # # # # # # # # # # # # # # #
+
+# # # # # # # # # # # # # # # # # # Logback Start # # # # # # # # # # # # # # # # # #
+logging:
+  # 生成文件路径
+#  path: /log
+  # 生成日志文件名称
+#  file: logInfo
+  # 加载本地配置文件
+  config: classpath:logback-spring.xml
+# # # # # # # # # # # # # # # # # # Logback Start # # # # # # # # # # # # # # # # # #
