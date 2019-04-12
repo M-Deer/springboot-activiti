@@ -1,0 +1,38 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boot.deer.mapper.leave.LeaveBillMapper">
+
+	<resultMap type="boot.deer.model.bill.LeaveBillModel"
+		id="LeaveBillModelMap">
+		<id property="id" column="ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="days" column="DAYS" />
+		<result property="status" column="STATUS" />
+		<result property="leaveTime" column="LEAVE_TIME" />
+
+		<!-- 用户对象查询 -->
+		<association property="user" column="USER_ID"
+			resultMap="UserModelMap"></association>
+	</resultMap>
+
+	<resultMap type="boot.deer.model.user.UserModel"
+		id="UserModelMap">
+		<id property="id" column="ID" />
+		<result property="username" column="USERNAME" />
+	</resultMap>
+
+	<select id="getItemByPage" resultMap="LeaveBillModelMap">
+		SELECT
+		L.*,
+		U.ID,
+		U.USERNAME
+		FROM
+		`SBA_LEAVE_BILL` AS L
+		INNER JOIN `SBA_USER` AS U ON L.`USER_ID` = U.`ID`
+		WHERE 1=1
+	</select>
+
+</mapper>

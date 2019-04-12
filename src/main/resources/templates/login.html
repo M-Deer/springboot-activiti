@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Activiti</title>
+
+<!-- CSS -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/bootstrap4/css/bootstrap.css}" />
+
+<style type="text/css">
+.container-fluid {
+	margin-top: 15%;
+	height: 260px;
+	background-color: #69ef6994;
+}
+
+form {
+	margin-top: 5%
+}
+
+h1 {
+	margin-top: 5%;
+	color: white;
+}
+</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class="row align-items-center">
+			<div class="col-4 offset-4">
+
+				<h1>Login</h1>
+				<form>
+
+					<div class="form-group row">
+						<label for="input_username" class="col-sm-3 col-form-label">用户名：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="input_username"
+								placeholder="Username">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="input_password" class="col-sm-3 col-form-label">密码：</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" id="input_password"
+								placeholder="Password">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="" class="col-sm-3 col-form-label"></label>
+						<div class="col-sm-8">
+							<button type="button" id="btnLogin" class="btn btn-primary">登陆</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<!-- JS -->
+<script type="text/javascript"
+	th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/static/bootstrap4/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/static/util/globalUtil.js}"></script>
+<script>
+	$(function() {
+		$('#btnLogin').click(()=>{
+			console.log(BASIS_URL);
+			let $username = $('#input_username').val();
+			let $password = $('#input_password').val();
+			
+			let $userModel = {};
+			$userModel.username =  $username;
+			$userModel.password =  $password;
+			
+			$.ajax({
+                type:'POST',
+                url:BASIS_URL+'/system',  
+                dataType:'JSON',
+        		contentType:'application/json;charset=UTF-8',
+                data:JSON.stringify($userModel),
+        		success:(responseData)=>{
+        			if(responseData.status=== '1')
+        				window.location.href=BASIS_URL+responseData.object;
+        			else
+        				alert(responseData.message);
+        		}
+			});
+		});
+	})
+</script>
+</html>

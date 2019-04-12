@@ -10,6 +10,10 @@ server:
 # # # # # # # # # # # # # # # # # # Spring Start # # # # # # # # # # # # # # # # # #
 # 配置关于 spring 相关的配置
 spring:
+  application:
+    name: springboot-activiti
+  
+  # 配置 Activiti  
   activiti:
     # Activiti 的自动建表的设置
     database-schema-update: true
@@ -53,6 +57,21 @@ spring:
       # 打开 PSCache，并指定每个连接上的 PSCache 的大小，oracle 设为 true，mysql 设为 false，分库分表较多，推荐设置为 false
       pool-prepared-statements: false
       max-pool-prepared-statement-per-connection-size: 20
+      
+  # 配置静态文件资源
+  mvc:
+    static-path-pattern: /static/**
+    throw-exception-if-no-handler-found: true
+
+  # 配置thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
 # # # # # # # # # # # # # # # # # # Spring End # # # # # # # # # # # # # #
 
 # # # # # # # # # # # # # # # # # # Mybatis Start # # # # # # # # # # # # # # # # # #
@@ -64,10 +83,5 @@ mybatis-plus:
 
 # # # # # # # # # # # # # # # # # # Logback Start # # # # # # # # # # # # # # # # # #
 logging:
-  # 生成文件路径
-#  path: /log
-  # 生成日志文件名称
-#  file: logInfo
-  # 加载本地配置文件
   config: classpath:logback-spring.xml
 # # # # # # # # # # # # # # # # # # Logback Start # # # # # # # # # # # # # # # # # #

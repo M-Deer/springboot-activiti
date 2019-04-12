@@ -29,7 +29,7 @@
 	</appender>
 
 	<!-- 打印 sql -->
-	<logger name="com.spdb.mapper" level="DEBUG"></logger>
+	<logger name="boot.deer.mapper" level="DEBUG"></logger>
 	<logger name="com.baomidou.dynamic" level="DEBUG" />
 
 	<!-- 日志输出级别 -->

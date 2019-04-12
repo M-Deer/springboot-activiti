@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Activiti</title>
+
+<!-- CSS -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/bootstrap4/css/bootstrap.css}" />
+
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body, .container-fluid, .row {
+	height: 98%;
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row mt-2">
+			<div class="col-3  pt-2">
+				<ul class="list-group">
+					<li class="list-group-item"><a href="#"> 请假单申请 </a></li>
+					<li class="list-group-item"><a href="#">待办任务 </a></li>
+					<li class="list-group-item"><a href="#">历史任务 </a></li>
+				</ul>
+			</div>
+			<div class="col-9">
+				<iframe th:src="@{/view/leaveBill}" frameborder="no" border="0"></iframe>
+				<!-- <iframe src="/activiti/view/leaveBill"></iframe> -->
+			</div>
+		</div>
+	</div>
+</body>
+<!-- JS -->
+<script type="text/javascript"
+	th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/static/bootstrap4/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/static/util/globalUtil.js}"></script>
+<script type="text/javascript" th:src="@{/static/main/main.js}"></script>
+</html>
