@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>代办任务</title>
+
+<!-- CSS -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/bootstrap4/css/bootstrap.css}" />
+
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/bootstartp-table/bootstrap-table.min.css}" />
+
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/bootstrap-validator/css/bootstrapValidator.css}" />
+
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/font-awesome/css/font-awesome.min.css}" />
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body, .container-fluid, .row {
+	height: 99%;
+}
+
+#task_table, .bootstrap-table {
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row pt-3">
+			<table id="task_table" class="table table-bordered table-hover">
+
+			</table>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal_task_info" tabindex="-1"
+		role="dialog" aria-labelledby="taskInfoModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="taskInfoModalLabel">任务办理</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<form id="form_task_info" novalidate>
+
+						<div class="form-group row">
+							<label for="input_task_title" class="col-sm-3 col-form-label">任务标题</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="input_task_title"
+									name="title" disabled="disabled">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="input_leave_content" class="col-sm-3 col-form-label">请假事由</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="input_leave_content"
+									name="content" disabled="disabled">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="input_leave_content" class="col-sm-3 col-form-label">请假天数</label>
+							<div class="col-sm-7">
+								<input type="number" class="form-control" name="days"
+									id="input_leave_days" disabled="disabled">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="input_leave_time" class="col-sm-3 col-form-label">请假时间</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="input_leave_time"
+									name="leaveTime" disabled="disabled">
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="btn_success" value=""></button>
+					<button type="button" class="btn btn-warning" id="btn_rollback" value=""></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<!-- JS -->
+<script type="text/javascript"
+	th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+
+<script type="text/javascript"
+	th:src="@{/static/jquery/jquery-serialize.js}"></script>
+
+<script type="text/javascript"
+	th:src="@{/static/bootstrap4/js/bootstrap.js}"></script>
+
+<script type="text/javascript"
+	th:src="@{/static/bootstartp-table/bootstrap-table.min.js}"></script>
+
+<script type="text/javascript"
+	th:src="@{/static/bootstartp-table/bootstrap-table-locale-all.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/static/util/globalUtil.js}"></script>
+
+<script type="text/javascript"
+	th:src="@{/static/complete/completeTask.js}"></script>
+
+</html>

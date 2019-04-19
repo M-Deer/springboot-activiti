@@ -29,14 +29,17 @@ iframe {
 		<div class="row mt-2">
 			<div class="col-3  pt-2">
 				<ul class="list-group">
-					<li class="list-group-item"><a href="#"> 请假单申请 </a></li>
-					<li class="list-group-item"><a href="#">待办任务 </a></li>
+					<li class="list-group-item"><a th:href="@{/view/leaveBill}"
+						target="iframe"> 请假单申请 </a></li>
+					<li class="list-group-item"><a th:href="@{/view/complete}"
+						target="iframe">待办任务 </a></li>
 					<li class="list-group-item"><a href="#">历史任务 </a></li>
+					<li class="list-group-item"><a href="#" id="a_logout">退出登陆 </a></li>
 				</ul>
 			</div>
 			<div class="col-9">
-				<iframe th:src="@{/view/leaveBill}" frameborder="no" border="0"></iframe>
-				<!-- <iframe src="/activiti/view/leaveBill"></iframe> -->
+				<iframe name="iframe" th:src="@{/view/leaveBill}" frameborder="no"
+					border="0"></iframe>
 			</div>
 		</div>
 	</div>

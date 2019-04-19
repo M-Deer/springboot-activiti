@@ -23,4 +23,9 @@ public interface SystemService {
 	 * @return 用户信息
 	 */
 	UserModel getUserInfo() throws Exception;
+
+	/**
+	 * 退出登录
+	 */
+	void logout();
 }

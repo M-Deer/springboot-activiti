@@ -4,6 +4,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import boot.deer.component.enumm.GlobalEnum;
+import boot.deer.model.user.UserModel;
+
 /** 
  * @ClassName: Util.java 
  * @Author: Mr_Deer
@@ -61,5 +70,37 @@ public class GlobalUtil {
 		if (str.equals(" "))
 			return true;
 		return false;
+	}
+
+	/**
+	 * 获取 request
+	 * 
+	 * @return request
+	 */
+	public static HttpServletRequest getHttpServletRequest() {
+		ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.getRequestAttributes();
+		HttpServletRequest request = requestAttributes.getRequest();
+		return request;
+	}
+
+	/**
+	 * 获取 session
+	 * 
+	 * @return session
+	 */
+	public static HttpSession getHttpSession() {
+		HttpSession session = getHttpServletRequest().getSession();
+		return session;
+	}
+
+	/**
+	 * 获取当前 登陆用户
+	 * 
+	 * @return user
+	 */
+	public static UserModel getCurrentUser() {
+		UserModel userModel = (UserModel) getHttpSession().getAttribute(GlobalEnum.SESSION_USER.getCode());
+		return userModel;
 	}
 }

@@ -15,6 +15,7 @@ public class ViewController {
 
 	/**
 	 * 登录页
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/index")
@@ -24,6 +25,7 @@ public class ViewController {
 
 	/**
 	 * 主页
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/main")
@@ -32,11 +34,22 @@ public class ViewController {
 	}
 
 	/**
-	 * 主页
+	 * 请假申请
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/leaveBill")
 	public String toLeaveBill() {
 		return "leave/leaveBill";
+	}
+
+	/**
+	 * 代办任务
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/complete")
+	public String toCompleteTask() {
+		return "complete/completeTask";
 	}
 }

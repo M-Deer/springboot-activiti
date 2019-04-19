@@ -7,11 +7,15 @@
 <!-- CSS -->
 <link type="text/css" rel="stylesheet"
 	th:href="@{/static/bootstrap4/css/bootstrap.css}" />
+
 <link type="text/css" rel="stylesheet"
 	th:href="@{/static/bootstartp-table/bootstrap-table.min.css}" />
+
 <link type="text/css" rel="stylesheet"
 	th:href="@{/static/bootstrap-validator/css/bootstrapValidator.css}" />
 
+<link type="text/css" rel="stylesheet"
+	th:href="@{/static/font-awesome/css/font-awesome.min.css}" />
 <style>
 * {
 	margin: 0px;
@@ -68,7 +72,7 @@ html, body, .container-fluid, .row {
 							<label for="input_leave_content" class="col-sm-3 col-form-label">请假天数</label>
 							<div class="col-sm-7">
 								<input type="number" class="form-control" name="days"
-									id="input_leave_content" placeholder="请假事由" required>
+									id="input_leave_content" placeholder="请假天数" required>
 								<div class="invalid-feedback">请假天数不能为空</div>
 							</div>
 						</div>
@@ -76,12 +80,13 @@ html, body, .container-fluid, .row {
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
+						data-dismiss="modal">取消</button>
 					<button type="button" class="btn btn-primary" id="btn_submit">提交</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </body>
 
 <!-- JS -->

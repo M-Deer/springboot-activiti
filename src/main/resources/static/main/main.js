@@ -1,5 +1,11 @@
 $(function(){
+	// 获取用户信息
 	getUserInfo();
+	
+	// 退出登录
+	$('#a_logout').on('click',()=>{
+		logout();
+	});
 })
 
 // 用户信息
@@ -20,6 +26,19 @@ function getUserInfo(){
 				alert(responseData.message);
 				window.location.href=BASIS_URL+'/view/index';
 			}
+		}
+	});
+}
+
+/**
+ * 退出登录
+ */
+function logout(){
+	$.ajax({
+        type:'GET',
+        url:BASIS_URL+'/system/logout',  
+		success:()=>{
+			window.location.href=BASIS_URL+'/view/index';
 		}
 	});
 }

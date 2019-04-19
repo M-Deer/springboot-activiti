@@ -54,4 +54,13 @@ public class SystemController {
 			return ResponseJsonResult.unsuccessResult(e.getMessage());
 		}
 	}
+
+	/**
+	 * 获取用户信息
+	 * @return 用户信息
+	 */
+	@GetMapping(value = "/logout")
+	public void logout() {
+		systemService.logout();
+	}
 }

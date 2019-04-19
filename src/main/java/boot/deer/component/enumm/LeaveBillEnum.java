@@ -7,14 +7,15 @@ package boot.deer.component.enumm;
  * @Description: 请假单枚举类
  */
 public enum LeaveBillEnum {
-	GIVE_UP("放弃", -1), TURN_DOWN("驳回", 0), EXAMINATION("审批中", 1), COMPLETE("审批完成", 2);
-	private int status;
+	GIVE_UP("放弃", "-1"), TURN_DOWN("驳回", "0"), EXAMINATION("审批中", "1"), COMPLETE("审批完成", "2"),
+	ASSIGNEE_USER("办理人变量 key", "ASSIGNEE_USER"), OUTCOME("连线的变量 key", "OUTCOME");
+	private String cod;
 
-	private LeaveBillEnum(String name, int status) {
-		this.status = status;
+	private LeaveBillEnum(String name, String cod) {
+		this.cod = cod;
 	}
 
-	public int getStatus() {
-		return this.status;
+	public String getCod() {
+		return this.cod;
 	}
 }

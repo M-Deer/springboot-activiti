@@ -24,7 +24,7 @@
 		<result property="username" column="USERNAME" />
 	</resultMap>
 
-	<select id="getItemByPage" resultMap="LeaveBillModelMap">
+	<select id="getItemsByPage" resultMap="LeaveBillModelMap">
 		SELECT
 		L.*,
 		U.ID,
@@ -33,6 +33,7 @@
 		`SBA_LEAVE_BILL` AS L
 		INNER JOIN `SBA_USER` AS U ON L.`USER_ID` = U.`ID`
 		WHERE 1=1
+		AND L.USER_ID = #{userId}
 	</select>
 
 </mapper>

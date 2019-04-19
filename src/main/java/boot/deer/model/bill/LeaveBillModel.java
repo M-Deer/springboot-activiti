@@ -64,7 +64,7 @@ public class LeaveBillModel implements Serializable {
 	 * 2：审批完成
 	 */
 	@TableField(value = "STATUS")
-	private Integer status;
+	private String status;
 
 	/**
 	 * 请假时间

@@ -68,7 +68,7 @@ public class ProcessDeploymentNote extends SpringbootActivitiApplicationTests {
 	@Test
 	public void processDeploymentUseZipResource() {
 		// zip 文件的路径
-		String zipPath = "/processes/note/leave/LeaveProcess.zip";
+		String zipPath = "/processes/example/leave/LeaveBillProcess.zip";
 
 		// 获取一个输入流
 		InputStream resourceAsStream = this.getClass().getResourceAsStream(zipPath);

@@ -19,5 +19,5 @@ public interface LeaveBillMapper extends BaseMapper<LeaveBillModel> {
 	 * @param page 分页数据
 	 * @return 结果集
 	 */
-	IPage<LeaveBillModel> getItemByPage(Page<LeaveBillModel> page);
+	IPage<LeaveBillModel> getItemsByPage(Page<LeaveBillModel> page, Long userId);
 }
