@@ -19,7 +19,7 @@ function initTableLeaveBill() {
 	$table.bootstrapTable({
 		locale : 'zh-CN',
 		height : 550,
-		url : BASIS_URL + '/billLeave',
+		url : BASIS_URL + '/billLeave/getItemsByPage',
 		pagination : 'true',
 		sidePagination : 'server',
 		pageNumber : 1,
@@ -68,7 +68,10 @@ function initTableLeaveBill() {
 			field : 'operate',
 			title : '操作',
 			formatter:(value, row, index)=>{
-				let html = '<button class="btn btn-outline-primary btn-sm" onclick=seeNowProcess('+row.id+')>查看进度</button>';
+				let html ='';
+				if(row.status==='1'){
+					html =  '<button class="btn btn-outline-primary btn-sm" onclick=checkNowProcessActivities('+row.id+')>查看进度</button>';
+				}
 				return html;
 			}
 		}]
@@ -100,10 +103,11 @@ function formValidation() {
 					data: JSON.stringify(jsonObj),
 					success: (responseData) => {
 						alert(responseData.message);
+						$('#table_leave_bill').bootstrapTable('refresh');
+						$('#modal_leave_info').modal('hide')
 					}
 				});
-				$('#table_leave_bill').bootstrapTable('refresh');
-				$('#modal_leave_info').modal('hide')
+				
 			}
 		}, false);
 	});
@@ -116,6 +120,7 @@ function formValidation() {
  * @param id
  *            当前流程 id
  */
-function seeNowProcess(id){
-	console.log(id);
+function checkNowProcessActivities(id){
+	$('#modal_activities_view').modal('show')
+	$('#img_activities_view').attr('src',BASIS_URL+'/activitiesView?leaveBillId='+id); 
 }

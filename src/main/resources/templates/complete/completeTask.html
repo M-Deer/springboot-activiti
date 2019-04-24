@@ -29,6 +29,10 @@ html, body, .container-fluid, .row {
 #task_table, .bootstrap-table {
 	width: 100%;
 }
+
+#form_task_info .fixed-table-body {
+	height: 80%;
+}
 </style>
 </head>
 <body>
@@ -54,39 +58,47 @@ html, body, .container-fluid, .row {
 				</div>
 				<div class="modal-body">
 
+					<!-- 请假单的详情 -->
 					<form id="form_task_info" novalidate>
-
-						<div class="form-group row">
-							<label for="input_task_title" class="col-sm-3 col-form-label">任务标题</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" id="input_task_title"
-									name="title" disabled="disabled">
+						<input type="hidden" id="input_leave_bill_id">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="input_task_title">任务标题</label> <input type="text"
+									class="form-control" id="input_task_title" name="title"
+									disabled="disabled">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="input_leave_content">请假事由</label> <input type="text"
+									class="form-control" id="input_leave_content" name="content"
+									disabled="disabled">
 							</div>
 						</div>
 
-						<div class="form-group row">
-							<label for="input_leave_content" class="col-sm-3 col-form-label">请假事由</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" id="input_leave_content"
-									name="content" disabled="disabled">
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="input_leave_content" class="col-sm-3 col-form-label">请假天数</label>
-							<div class="col-sm-7">
-								<input type="number" class="form-control" name="days"
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="input_leave_content">请假天数</label> <input
+									type="number" class="form-control" name="days"
 									id="input_leave_days" disabled="disabled">
 							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="input_leave_time" class="col-sm-3 col-form-label">请假时间</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" id="input_leave_time"
-									name="leaveTime" disabled="disabled">
+							<div class="form-group col-md-6">
+								<label for="input_leave_content">请假时间</label> <input type="text"
+									class="form-control" id="input_leave_time" name="leaveTime"
+									disabled="disabled">
 							</div>
 						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="input_leave_time">批注信息</label>
+								<textarea class="form-control" id="textarea_comment" rows="3"
+									style="resize: none"></textarea>
+							</div>
+						</div>
+
+						<!-- 历史批注信息表 -->
+						<table id="task_comment_history"
+							class="table table-bordered table-hover">
+						</table>
 
 					</form>
 
@@ -94,8 +106,10 @@ html, body, .container-fluid, .row {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" id="btn_success" value=""></button>
-					<button type="button" class="btn btn-warning" id="btn_rollback" value=""></button>
+					<button type="button" class="btn btn-warning" id="btn_rollback"
+						value=""></button>
+					<button type="button" class="btn btn-primary" id="btn_success"
+						value=""></button>
 				</div>
 			</div>
 		</div>

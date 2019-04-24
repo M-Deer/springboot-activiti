@@ -8,10 +8,12 @@ package boot.deer.component.enumm;
  */
 public enum LeaveBillEnum {
 	GIVE_UP("放弃", "-1"), TURN_DOWN("驳回", "0"), EXAMINATION("审批中", "1"), COMPLETE("审批完成", "2"),
-	ASSIGNEE_USER("办理人变量 key", "ASSIGNEE_USER"), OUTCOME("连线的变量 key", "OUTCOME");
+	ASSIGNEE_USER("办理人变量 key", "ASSIGNEE_USER"), OUTCOME("连线的变量 key", "OUTCOME"),
+	PROCESS_DEFINE_KEY("请假单流程定义的KEY", "LeaveBillProcess");
+
 	private String cod;
 
-	private LeaveBillEnum(String name, String cod) {
+	private LeaveBillEnum(String description, String cod) {
 		this.cod = cod;
 	}
 

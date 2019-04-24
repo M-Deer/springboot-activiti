@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -21,6 +22,9 @@ import boot.deer.model.user.UserModel;
  */
 @SuppressWarnings("rawtypes")
 public class GlobalUtil {
+
+	// 全局上下文
+	private static ApplicationContext applicationContext;
 
 	/**
 	 * 判断对象是否为空
@@ -72,6 +76,8 @@ public class GlobalUtil {
 		return false;
 	}
 
+	/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = HttpServlet Start = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
 	/**
 	 * 获取 request
 	 * 
@@ -103,4 +109,59 @@ public class GlobalUtil {
 		UserModel userModel = (UserModel) getHttpSession().getAttribute(GlobalEnum.SESSION_USER.getCode());
 		return userModel;
 	}
+
+	/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = HttpServlet End = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+	/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ApplicationContext Start = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+	/**
+	 * 设置当前上下文
+	 * 
+	 * @param applicationContext 上下文
+	 */
+	public static void setApplicationContext(ApplicationContext applicationContext) {
+		if (isEmpty(GlobalUtil.applicationContext))
+			GlobalUtil.applicationContext = applicationContext;
+	}
+
+	/**
+	 * 获取当前上下文
+	 * 
+	 * @return ApplicationContext
+	 */
+	public static ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
+
+	/**
+	 * 根据名称返回 Bean
+	 * @param beanName 名称
+	 * @return Bean
+	 */
+	public static Object getBean(String beanName) {
+		return getApplicationContext().getBean(beanName);
+	}
+
+	/**
+	 * 根据 Class 返回 Bean
+	 * 
+	 * @param clazz 类型
+	 * @return Bean
+	 */
+	public static <T> T getBean(Class<T> clazz) {
+		return getApplicationContext().getBean(clazz);
+	}
+
+	/**
+	 * 通过 Name,以及 Clazz 返回指定的 Bean
+	 * 
+	 * @param beanName 名称
+	 * @param clazz 类型
+	 * @return Bean
+	 */
+	public static <T> T getBean(String beanName, Class<T> clazz) {
+		return getApplicationContext().getBean(beanName, clazz);
+	}
+	/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ApplicationContext End = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
 }

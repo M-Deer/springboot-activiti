@@ -29,6 +29,12 @@ html, body, .container-fluid, .row {
 #table_leave_bill, .bootstrap-table {
 	width: 100%;
 }
+
+img {
+/* 	width: 95%;
+	height: 95%; */
+	background-color: black;
+}
 </style>
 </head>
 <body>
@@ -86,7 +92,35 @@ html, body, .container-fluid, .row {
 			</div>
 		</div>
 	</div>
-	
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal_activities_view"
+		tabindex="-1" role="dialog" aria-labelledby="activitiesViewModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="activitiesViewModalLabel">当前节点</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div>
+						<img id="img_activities_view" width="400px" height="450px" />
+						<!-- 	<div
+							style="position: absolute; border: 2px red solid; left: 252.0px; top: 130.0px; height: 55.0px; width: 171.0px;"></div> -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 <!-- JS -->

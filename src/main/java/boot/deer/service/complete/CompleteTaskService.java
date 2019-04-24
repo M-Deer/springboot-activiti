@@ -1,10 +1,12 @@
 package boot.deer.service.complete;
 
+import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import boot.deer.model.complete.CommentModel;
 import boot.deer.model.complete.CompleteTaskModel;
 
 /** 
@@ -30,4 +32,19 @@ public interface CompleteTaskService extends IService<CompleteTaskModel> {
 	 * @return 结果
 	 */
 	Map<String, Object> getItemById(String taskId);
+
+	/**
+	 * 根据任务ID 查询批注信息
+	 * 
+	 * @param taskId 任务ID
+	 * @return 结果集
+	 */
+	List<CommentModel> getCommentsByTaskId(String taskId);
+
+	/**
+	 * 办理任务
+	 * 
+	 * @param paramMap 参数Map
+	 */
+	void completeTask(Map<String, String> paramMap) throws Exception;
 }

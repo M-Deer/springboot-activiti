@@ -31,9 +31,6 @@ import boot.deer.service.system.SystemService;
 @Transactional
 public class LeaveBillServiceImpl extends ServiceImpl<LeaveBillMapper, LeaveBillModel> implements LeaveBillService {
 
-	// 请假流程定义的 key
-	private static final String PROCESS_DEFINE_KEY = "LeaveBillProcess";
-
 	private final LeaveBillMapper leaveBillMapper;
 	private final SystemService systemService;
 	private final RuntimeService runtimeService;
@@ -92,23 +89,12 @@ public class LeaveBillServiceImpl extends ServiceImpl<LeaveBillMapper, LeaveBill
 		UserModel userModel = GlobalUtil.getCurrentUser();
 
 		// businessKey 格式 流程定义key+：+请假单id
-		String businessKey = PROCESS_DEFINE_KEY + ":" + leaveBillId;
+		String businessKey = LeaveBillEnum.PROCESS_DEFINE_KEY.getCod() + ":" + leaveBillId;
 		// 流程变量，办理人(首次的提交办理人)
 		Map<String, Object> variables = new HashMap<>();
 		variables.put(LeaveBillEnum.ASSIGNEE_USER.getCod(), userModel.getUsername());
 
 		// 启动流程
-		runtimeService.startProcessInstanceByKey(PROCESS_DEFINE_KEY, businessKey, variables);
-	}
-
-	/**
-	 * 根据ID 获取请假单详情
-	 * @param billId 请假单 ID
-	 * @return 结果
-	 */
-	@Override
-	public LeaveBillModel getItemById(Long billId) {
-		LeaveBillModel leaveBillModel = leaveBillMapper.selectById(billId);
-		return leaveBillModel;
+		runtimeService.startProcessInstanceByKey(LeaveBillEnum.PROCESS_DEFINE_KEY.getCod(), businessKey, variables);
 	}
 }

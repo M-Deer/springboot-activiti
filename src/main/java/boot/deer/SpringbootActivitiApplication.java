@@ -4,8 +4,10 @@ import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import boot.deer.component.util.GlobalUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -22,7 +24,9 @@ import lombok.extern.slf4j.Slf4j;
 public class SpringbootActivitiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootActivitiApplication.class, args);
+		ApplicationContext applicationContext = SpringApplication.run(SpringbootActivitiApplication.class, args);
+		// 设置上下文
+		GlobalUtil.setApplicationContext(applicationContext);
 		log.info("Spring Boot - Activiti Success~~~");
 	}
 }

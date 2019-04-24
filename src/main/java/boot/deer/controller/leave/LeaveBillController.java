@@ -3,7 +3,6 @@ package boot.deer.controller.leave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +38,7 @@ public class LeaveBillController {
 	 * @param size 显示数量
 	 * @return Json 结果
 	 */
-	@GetMapping
+	@GetMapping(value = "/getItemsByPage")
 	public IPage<LeaveBillModel> getItemsByPage(@RequestParam(name = "pageNumber") Integer current,
 			@RequestParam(name = "pageSize") Integer size) {
 		IPage<LeaveBillModel> resultIPage = leaveBillService.getItemsByPage(current, size);
@@ -61,16 +60,5 @@ public class LeaveBillController {
 		} catch (Exception e) {
 			return ResponseJsonResult.unsuccessResult("启动流程失败");
 		}
-	}
-
-	/**
-	 * 根据ID 获取请假单详情
-	 * @param billId 请假单 ID
-	 * @return Json 结果
-	 */
-	@PutMapping
-	public ResponseJsonResult getItemById(@RequestParam(name = "billId") Long billId) {
-		LeaveBillModel leaveBillModel = leaveBillService.getItemById(billId);
-		return ResponseJsonResult.successResult(leaveBillModel);
 	}
 }

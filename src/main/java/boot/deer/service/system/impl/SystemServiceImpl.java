@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
@@ -21,6 +22,7 @@ import boot.deer.service.system.SystemService;
  * @Description: 系统 Service
  */
 @Service
+@Transactional
 public class SystemServiceImpl implements SystemService {
 
 	private final UserMapper userMapper;

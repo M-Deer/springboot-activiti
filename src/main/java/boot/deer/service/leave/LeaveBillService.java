@@ -27,11 +27,4 @@ public interface LeaveBillService extends IService<LeaveBillModel> {
 	 * @param leaveBillModel 请假单实体类
 	 */
 	void insertItem(LeaveBillModel leaveBillModel) throws Exception;
-
-	/**
-	 * 根据ID 获取请假单详情
-	 * @param billId 请假单 ID
-	 * @return 结果
-	 */
-	LeaveBillModel getItemById(Long billId);
 }
