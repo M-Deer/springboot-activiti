@@ -69,7 +69,7 @@ function initTableLeaveBill() {
 			title : '操作',
 			formatter:(value, row, index)=>{
 				let html ='';
-				if(row.status==='1'){
+				if(row.status==='1' || row.status==='0'){
 					html =  '<button class="btn btn-outline-primary btn-sm" onclick=checkNowProcessActivities('+row.id+')>查看进度</button>';
 				}
 				return html;

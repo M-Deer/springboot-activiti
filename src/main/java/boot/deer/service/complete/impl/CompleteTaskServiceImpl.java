@@ -273,10 +273,11 @@ public class CompleteTaskServiceImpl extends ServiceImpl<CompleteTaskMapper, Com
 		// 首先判断流程是否结束
 		ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
 				.processInstanceId(processInstanceId).singleResult();
+		// 修改对象信息
+		LeaveBillModel leaveBillModel = new LeaveBillModel();
+		leaveBillModel.setId(Long.parseLong(leaveBillId));
+
 		if (GlobalUtil.isEmpty(processInstance)) {
-			// 修改对象信息
-			LeaveBillModel leaveBillModel = new LeaveBillModel();
-			leaveBillModel.setId(Long.parseLong(leaveBillId));
 			// 流程结束有两种情况：审批全部通过结束；自己放弃结束
 			if (outcome.equals("放弃")) {
 				// 修改请假单状态
@@ -285,6 +286,12 @@ public class CompleteTaskServiceImpl extends ServiceImpl<CompleteTaskMapper, Com
 				leaveBillModel.setStatus(LeaveBillEnum.COMPLETE.getCod());
 			}
 			leaveBillMapper.updateById(leaveBillModel);
+		} else {
+			if (outcome.equals("驳回")) {
+				// 修改请假单状态
+				leaveBillModel.setStatus(LeaveBillEnum.TURN_DOWN.getCod());
+				leaveBillMapper.updateById(leaveBillModel);
+			}
 		}
 	}
 }
