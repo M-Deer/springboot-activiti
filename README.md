@@ -2,7 +2,7 @@
 
 ## 概述：
 
-** 本Demo 配套的教程笔记：https://www.yuque.com/mrdeer/activiti_note **
+本Demo 配套的教程笔记：https://www.yuque.com/mrdeer/activiti_note
 
 该项目是关于 Spring Boot 整合 Activiti 框架的一个代码笔记，只用于学习使用，非商业性质。所有的笔记都在Test文件夹下，
 因为都是使用 Junit 进行测试使用的。
